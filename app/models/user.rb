@@ -84,6 +84,12 @@ class User < ApplicationRecord
     self.image    = hash['info']['image']
   end
 
+  def handle_developer_attributes(hash)
+    self.nickname = hash['info']['name'] unless nickname
+    self.name     = hash['info']['name']
+    self.image    = 'no_image.png'
+  end
+
   def with_provider?(provider)
     authorizations.map(&:provider).include?(provider)
   end

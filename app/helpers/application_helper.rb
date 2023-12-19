@@ -13,7 +13,10 @@ module ApplicationHelper
   end
 
   def login_providers
-    %w[twitter github google_oauth2]
+    providers = %w[twitter github google_oauth2]
+    
+    providers << 'developer' if Rails.env.development?
+    providers
   end
 
   def whitelabel_stylesheet_link_tag
